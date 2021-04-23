@@ -13,13 +13,19 @@
     <div class="root">
       <input placeholder="请输入"></input>
     </div>
-    
+
     <script src="https://www.w3cways.com/demo/vconsole/vconsole.min.js?v=2.2.0"></script>
     <script>
-      const ua = window.navigator.userAgent;
-      const isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
+      var ua = window.navigator.userAgent;
+      var isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
       if(isAndroid){
         document.body.style.height = window.innerHeight + 'px';
+      }
+      window.onresize = function() {
+        if (isAndroid) {
+          console.log('窗口大小改变 onresize');
+          document.body.style.height = window.innerHeight + 'px';
+        }
       }
       window.addEventListener('resize', function() {
         if (isAndroid) {
