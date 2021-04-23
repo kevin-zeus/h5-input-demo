@@ -2,16 +2,29 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>H5-Input</title>
+    <style>
+      html, body, .root {
+        height: 100%;
+      }
+    </style>
 	</head>
 	<body>
-    <div>
+    <div class="root">
       <input placeholder="请输入"></input>
     </div>
     
     <script>
+      const ua = window.navigator.userAgent;
+      const isAndroid = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
+      if(isAndroid){
+        document.body.style.height = window.innerHeight + 'px';
+      }
       window.addEventListener('resize', function() {
-        console.log('窗口大小改变')
+        if (isAndroid) {
+          console.log('窗口大小改变');
+          document.body.style.height = window.innerHeight + 'px';
+        }
       })
     </script>
 	</body>
